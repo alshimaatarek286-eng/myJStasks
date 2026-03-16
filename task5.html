@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="discription" contant="product" />
+        <title>Product Display System </title>
+        <style>
+         
+           body {
+                 background-color: rgb(208, 212, 168);
+                 
+                
+                }
+          
+        </style>
+        
+    </head>
+    <>
+        <h1><u>Product Display System </u></h1>
+        <form  onsubmit=" return false;"  >
+            <div>
+            <input type="text" id="research" placeholder="Enter name or price of the product";/>
+            
+            <button type="button"  onclick="filters()">filter</button>
+            </div>    
+        </form>
+            <br>
+            <ul id="productList">
+                <li>Camera<br>500</li>
+            <br>
+                <li>Keyboard<br>100</li>
+            <br>
+                <li>Computer<br>2000</li>
+            <br>
+                <li>Laptop<br>1000</li>
+            </ul>
+    <script>
+            
+            function filters(){
+                let input=document.getElementById("research").value.toLowerCase();
+                let list=document.getElementById("productList");
+                let items=list.querySelectorAll("li");
+
+                        for(let i=0; i < items.length ;i++){
+                            let text= items[i].textContent.toLowerCase();
+                            if(text.includes(input)){
+                                items[i].textContent=items[i].textContent;
+                            }else{
+                                items[i].textContent="";
+                            }
+                        }
+                 /* (css)ممكن اعرض او اخفي العناصر بالاستعانه بال      
+                 items[i].style.display="list-item";
+                 items[i].style.display="none";
+                */
+            }
+            
+           
+
+    </script>
+    </body>
+</html>

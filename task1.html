@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="discription" contant="Hobbies" />
+        <title>Enter your data </title>
+        <style>
+         
+           body {
+                 background-color: cadetblue;
+                 
+                
+                }
+          
+            </style>
+        
+    </head>
+    <body>
+        <h1><u>Enter Your Data</u></h1>
+        <form onsubmit="showData();return false;" >
+
+            <div>
+                <input type="text" id="userName" placeholder="name" required>
+            </div>
+            <br>
+            <div>
+                <input type="numbers" id="userAge" placeholder="age" required>
+            </div>
+            <br>
+            <div>
+                <input type="text" id="userHobby" placeholder="hobby" required>
+            </div>
+            <br>
+            <div>
+                <button type="submit">submit</button>
+            </div>
+            <br>
+        </form>
+            
+            <div  id="result">
+                <p id="displayName"></p>
+                <p id="displayAge"></p>
+                <p id="displayHobby"></p>
+            </div>
+        <script>
+             function showData(){
+                let name=document.getElementById("userName").value;
+                let age=document.getElementById("userAge").value;
+                let hobby=document.getElementById("userHobby").value;
+                
+               
+
+                 document.getElementById("displayName","displayAge","displayHobby").innerHTML
+                = "your name is: " + name + " " +" age is: " + age + " " + " hobby is: " + hobby ;
+
+             }
+
+        </script>
+       
+    </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF_8"/>
+        <meta name="discription" contant="days" />
+        <title> days </title>
+<style>
+        body {
+           font-family: Tahoma, Arial;
+           background: #becde4;
+           color: #725a5a;
+           text-align: center;
+           direction: itr; }
+
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: #3b5168;
+            color: white;
+            font-size: 14px;
+                                }
+
+</style>
+</head>
+<body>
+        <h1><u>Enter one day of the week</u></h1>
+        <form  onsubmit="showData(); return false;"  >
+
+            <div>
+                <input type="text" id="day" placeholder="Enter Your day" required>    
+            </div>
+            <br>
+            <div>
+                <button type="button"  onclick="showData()"> submit </button>
+                 
+            </div>    
+            <br>
+            </form>
+            <div  id="resultArea">
+                <p id="finalResult"> </p>
+            </div>
+<script>
+            function showData(){
+             let displayDay=document.getElementById("day").value.toLowerCase().trim();
+
+             let display =document.getElementById("finalResult");
+                 let result;
+/*
+                 if (displayDay === 'friday') {
+                result = "it`s friday,have a blessed day!";
+                } else if (displayDay === 'saturday'||displayDay === 'sunday') {
+                result = "weekend vibes! start your week fresh";
+                } else if (displayDay === 'monday') {
+                result = "let`s kick off the week strong!";
+                } else if (displayDay === 'tuesday') {
+                result ="keep going ";
+                }else if (displayDay === 'wednesday'||displayDay ==='thursday') {
+                result ="هانت كمل وانت بتعيط  ";
+                }else {
+                result = "يوم مش موجود في الكون";
+            }
+    
+            
+        display.textContent = result;
+            }
+*/
+
+  switch (displayDay){
+                    case 'friday':
+                         result =  "it`s friday,have a blessed day!";
+                         break;
+                    case 'saturday':
+                    case 'sunday' :
+                         result = "weekend vibes! start your week fresh";
+                         break;
+                    case  'monday' :
+                         result = "let`s kick off the week strong!";
+                         break;
+                    case 'tuesday' :
+                         result = "keep going ";
+                         break;
+                    case 'wednesday' :
+                         result = "keep going there`s no other solution ";
+                         break;
+                    case 'thursday' :
+                         result = "هانت كمل وانت بتعيط  ";
+                         break;
+                    default:
+                        result = "يوم مش موجود في الكون  "
+                
+                
+                }
+               display.textContent=" "+ result ;
+                
+            }
+</script>
+</body>
+</html>

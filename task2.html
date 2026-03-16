@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="UTF_8"/>
+        <meta name="discription" contant="calculation" />
+        <title>Calculator </title>
+<style>
+       body {
+    font-family: Tahoma, Arial;
+    background: #f5f7fa;
+    color: #725a5a;
+    text-align: center;
+    direction: itr;
+}
+    h1 { color: #a03535; }
+    #searchBox {
+    width: 250px;
+    padding: 8px;
+    font-size: 14px;
+    margin: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+    button {
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #3b5168;
+    color: white;
+    font-size: 14px;
+}
+</style>                                                          
+</head>
+
+<body>
+    <h1><u>Enter Your Numbers</u></h1>
+        <form  onsubmit="return false;"  >
+
+            <div>
+                <input type="number" id="firstNumber" placeholder="Enter Your FirstNumber" required>    
+                <input type="number" id="secondNumber" placeholder="Enter Your SecondNumber" required>
+            </div>
+            <br>
+            <div>
+                <button type="button"  onclick="calculate('add')"> Add+ </button>
+                <button type="button"  onclick="calculate('subtract')"> Subtract- </button>
+                <button type="button"  onclick="calculate('multiply')"> multiply* </button>
+                <button type="button"  onclick="calculate('divide')"> divide/ </button>
+            </div>    
+             
+            <br>
+            </form>
+            <div  id="resultArea">
+                <p id="finalResult"> </p>
+                
+            </div>
+<script>
+        function calculate(operation) {
+                let n1=Number(document.getElementById("firstNumber").value);
+                let n2=Number(document.getElementById("secondNumber").value);
+                let display =document.getElementById("finalResult");
+                 let result;
+                 
+                if (operation === 'add') {
+                result = n1 + n2;
+                } else if (operation === 'subtract') {
+                result = n1 - n2;
+                } else if (operation === 'multiply') {
+                result = n1 * n2;
+                } else if (operation === 'divide') {
+                result = n2 !== 0 ? n1 / n2 : "خطأ: قسمة على صفر";
+            }
+            
+        display.innerHTML  = `<h1> ${result}</h1>` ;
+            
+        }
+/*
+                switch (operation){
+                    case 'add':
+                         result = n1 + n2;
+                         break;
+                    case 'subtract':
+                        result = n1 - n2;
+                        break;
+                    case 'multiply' :
+                         result = n1 * n2;
+                         break;
+                    case  'divide' :    
+                      if (secondNumber !== 0) {
+                      result = firstNumber / secondNumber;
+                        } else {
+                      result = "لا يمكن القسمة على صفر!";
+                        } 
+                        break;
+                    default:
+                        result = "عملية غير متوفره انتظر التحديثات وارضا بالمتاح "
+                
+                
+                }
+               display.textContent="result is" + result ;
+                
+            }
+  */
+  
+</script>
+</body>
+</html>

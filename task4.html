@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="discription" contant="ToDo list" />
+        <title>to do list </title>
+        <style>
+         
+           body {
+                 background-color: rgb(238, 208, 236);
+                 
+                
+                }
+          
+        </style>
+        
+    </head>
+    <body>
+        <h1><u>Enter You Daily List</u></h1>
+       
+        <div>
+            <input type="text" id="taskInput" placeholder="enter your task " />
+        </div>
+        <br>
+        <div>
+            <button type="button"  onclick="addTask()"> add </button>
+            <button type="button"  onclick="sorting()">sort</button>
+        </div>
+        <div>
+            <ul id="taskList" ></ul>
+        </div> 
+        
+        
+
+        <script>
+            let tasks =[];
+            function addTask(){
+                let input=document.getElementById("taskInput").value;
+                 tasks.push(input);
+                 renderTasks()
+                
+            }
+            
+            function sorting(){
+                tasks.sort();
+                renderTasks();
+            }
+             function renderTasks(){
+                let list=document.getElementById("taskList");
+                list.innerHTML="";
+                tasks.forEach(function(task){
+                list.innerHTML+= `<li> <input type="checkbox">${task}</li>`;
+                
+                });
+            }
+            
+        </script>
+        
+    </body>
+</html>
