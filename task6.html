@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="product" />
+        <title>Product Display System </title>
+        <style>
+         
+           body {
+                background-color: rgb(236, 197, 240);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #productList {
+            margin-top: 20px;
+            padding: 10px;
+        }
+        p {
+            background: rgb(182, 137, 185);
+            margin: 10px auto;
+            padding: 10px;
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+                
+          
+        </style>
+        
+    </head>
+    <body>
+        <h1><u>Product Display System with taxRate </u></h1>
+            
+            <div  id="productList">   </div>
+
+               
+    <script>
+            let products = [
+            {name:"Camera",price:1500},
+            {name:"keyboard",price:400},
+            {name:"Computer",price:2000},
+            {name:"laptop",price:3000}
+            ];
+            const tax =  0.14 ;
+
+            function calculator(price){
+                return price + (price*tax);
+            }
+
+            function showProduct(){
+                const listContainer = document.getElementById("productList");
+                let output="";
+                for(let i=0;i<products.length;i++){
+                    let name=products[i].name;
+                    let price=products[i].price;
+                    let finalPrice =calculator(price);
+
+                    output+=`<p>${name}<br>
+                     السعر قبل الضريبة:${price}<br>
+                     السعر بعد الضريبة ${finalPrice.toFixed(2)}</p>`
+
+                    }
+                    listContainer.innerHTML = output ;
+                }
+            
+            showProduct();
+
+    </script>
+    </body>
+</html>

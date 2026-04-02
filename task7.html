@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="product" />
+    <title>Product Display System</title>
+    <style>
+        body {
+            background-color: rgb(236, 197, 240);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 20px;
+            padding: 10px;
+        }
+        .product-card {
+            background: rgb(182, 137, 185);
+            margin: 10px auto;
+            padding: 15px;
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1><u>Product Display System with taxRate</u></h1>
+    <div>
+        <button type="button" onclick="felters()">Filter </button>
+    </div>             
+    <div id="container"></div>
+
+    <script>
+        let products = [
+            {name: "Camera", price: 1500, category: "electronic"},
+            {name: "Keyboard", price: 400, category: "electronic"},
+            {name: "Computer", price: 2000, category: "electronic"},
+            {name: "Laptop", price: 3000, category: "electronic"}
+        ];
+
+        let container = document.getElementById("container");
+
+        // حساب الضريبة لكل منتج
+        let productList = products.map(function(product) {
+            let taxAmount = product.price * 0.14;
+            return {
+                name: product.name,
+                price: product.price,
+                category: product.category,
+                priceWithTax: product.price + taxAmount 
+            }
+        });
+
+        // دالة عرض المنتجات
+        function showProduct(items) {
+            container.innerHTML = ""; 
+
+            items.forEach(function(product) { 
+                container.innerHTML += `
+                <div class="product-card">
+                    <h3>${product.name}</h3>
+                    <p>Category: ${product.category}</p>
+                    <p>Price: ${product.price}</p>
+                    <p>Price With Tax: ${product.priceWithTax.toFixed(2)}</p>
+                </div>
+                `;
+            });
+        }
+
+        // دالة الفلترة
+        function felters() {
+            let filtered = productList.filter(function(product) {
+                return product.priceWithTax < 2000;
+            });
+            showProduct(filtered);
+        }
+
+        // عرض المنتجات 
+        showProduct(productList);
+    </script>
+</body>
+</html>

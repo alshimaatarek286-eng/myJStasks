@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <meta name="discription" contant="Hobbies" />
+        <meta name="description" content="Hobbies" />
         <title>Enter your data </title>
         <style>
          
@@ -19,29 +19,19 @@
         <h1><u>Enter Your Data</u></h1>
         <form onsubmit="showData();return false;" >
 
-            <div>
-                <input type="text" id="userName" placeholder="name" required>
-            </div>
+            <div><input type="text" id="userName" placeholder="name" required></div>
             <br>
-            <div>
-                <input type="numbers" id="userAge" placeholder="age" required>
-            </div>
+            <div><input type="numbers" id="userAge" placeholder="age" required></div>
             <br>
-            <div>
-                <input type="text" id="userHobby" placeholder="hobby" required>
-            </div>
+            <div><input type="text" id="userHobby" placeholder="hobby" required></div>
             <br>
-            <div>
-                <button type="submit">submit</button>
-            </div>
+            <div><button type="submit">submit</button></div>
             <br>
         </form>
-            
             <div  id="result">
                 <p id="displayName"></p>
                 <p id="displayAge"></p>
-                <p id="displayHobby"></p>
-            </div>
+                <p id="displayHobby"></p></div>
         <script>
              function showData(){
                 let name=document.getElementById("userName").value;
