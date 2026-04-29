@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="productList" />
+        <title>productList </title>
+        <style>
+         
+            body {
+            margin-top: 100px;
+            font-family: Tahoma, Arial;
+            background: #f5f7fa;
+            color: #5a475a;
+            text-align: center;
+            direction: itr;
+            }
+            h3 { color: #ba97be; }
+            
+            p {
+            background: rgb(182, 137, 185);
+            margin: 10px auto;
+            padding: 10px;
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+            
+        </style>
+        
+    </head>
+    <body>
+        
+        <h3> All Product </h3>
+
+        <div id="productDisplay">
+        </div>
+        
+    <script>
+
+      let products = [
+              { name: "camera", price:9000 , description:"sony camera"},
+              { name: "laptop", price: 20000, description: "labtop dell core i7 " },
+              { name: "tablet", price: 7000, description: "tablet samsong " }
+                  ];
+
+       function updateList() {
+       const displayArea = document.getElementById('productDisplay');
+        //  مسح المحتوى القديم قبل العرض
+        displayArea.innerHTML = '';
+
+        if (products.length === 0) {
+            displayArea.innerHTML = "<h2>عفواً لا يوجد منتجات!</h2>";
+            return;
+        }
+
+     //    عرض الكتب
+        products.forEach((products,index )=> {
+        const productDiv = document.createElement('div');
+        productDiv.className = "product";
+        productDiv.innerHTML=`
+            <h3>${products.name}</h3>
+            <p>price:${products.price}</p>
+            <p>${products.description}</p>
+            <button  onclick="editProduct(${index})">تعديل</button>
+            <button  onclick="deleteProduct(${index})">حذف</button>
+            `;
+        
+            displayArea.appendChild(productDiv);
+        });
+        
+    }
+        //  دالة الحذف
+    function deleteProduct(index) {
+        if (confirm("هل تريد حذف هذا المنتج؟")) {
+            products.splice(index, 1);
+            updateList();
+        }
+    }
+
+    //  دالة التعديل
+    function editProduct(index) {
+        let newName = prompt("الاسم الجديد:", products[index].name);
+        let newPrice = prompt("السعر الجديد:", products[index].price);
+        let newDesc = prompt("الوصف الجديد:", products[index].description);
+
+        if (newName && newPrice && newDesc) {
+            products[index].name = newName;
+            products[index].price = newPrice;
+            products[index].description = newDesc;
+
+     // تحديث العرض
+    updateList();
+
+        }
+    }
+
+    // التشغيل الأول
+    updateList();
+
+</script>
+</body>
+</html>

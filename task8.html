@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="library" />
+        <title>Library System </title>
+        <style>
+         
+            body {
+            margin-top: 150px;
+            font-family: Tahoma, Arial;
+            background: #f5f7fa;
+            color: #5a475a;
+            text-align: center;
+            direction: itr;
+            }
+            h3 { color: #ba97be; }
+            
+            p {
+            background: rgb(182, 137, 185);
+            margin: 10px auto;
+            padding: 10px;
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            
+            
+        </style>
+        
+    </head>
+    <body>
+
+
+<h3>Total Pages: <span id="totalPages">0</span></h3>
+
+<div id="libraryDisplay">
+    </div>
+
+    <script>
+
+      let library = {
+          sections: [
+              {
+                name: "programming",
+                books: [
+                    { title: "JS Basics", author: "osama", pages: 200 },
+                    { title: "HTML Guide", author: "osama", pages: 60 }
+                  ]
+              }
+          ]
+      };
+
+       function updateLibrary() {
+       const displayArea = document.getElementById('libraryDisplay');
+       const pagesSpan = document.getElementById('totalPages');
+    
+        //  مسح المحتوى القديم قبل العرض
+        displayArea.innerHTML = '';
+        let totalPages = 0;
+
+     //    عرض الكتب
+        library.sections.forEach(section => {
+        const sectionDiv = document.createElement('div');
+        sectionDiv.innerHTML = `<h4>Section: ${section.name}</h4>`;
+        
+        section.books.forEach(book => {
+            const p = document.createElement('p');
+            p.textContent = ` ${book.title} by ${book.author} (${book.pages} pages)`;
+            sectionDiv.appendChild(p);
+        });
+        
+        displayArea.appendChild(sectionDiv);
+
+        //  حساب الصفحات داخل هذا القسم وإضافتها للمجموع الكلي
+        const sectionPages = section.books.reduce((sum, book) => sum + Number(book.pages), 0);
+        totalPages += sectionPages;
+    });
+
+    pagesSpan.textContent = totalPages;
+}
+
+
+
+// تشغيل العرض لأول مرة عند تحميل الصفحة
+updateLibrary();
+
+</script>
+</body>
+</html>

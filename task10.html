@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="user management" />
+        <title>User management System </title>
+        <style>
+         
+            body {
+            margin-top: 100px;
+            font-family: Tahoma, Arial;
+            background: #f5f7fa;
+            color: #5a475a;
+            text-align: center;
+            direction: itr;
+            }
+            h3 { color: #ba97be; }
+            
+            p {
+            background: rgb(182, 137, 185);
+            margin: 10px auto;
+            padding: 10px;
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+            table {
+            margin: 20px auto; 
+            border-collapse: collapse ;
+            width: 80%;
+            background-color: white;
+        }
+
+        th, td {
+            border: 1px solid #ba97be; 
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #8e44ad;
+            color: white;
+        }
+        </style>
+        
+    </head>
+    <body>
+        <h3>users data  </h3>
+        
+        <form > 
+            <input type="text" id="userName" placeholder="Enter your Name">
+            <input type="number" id="age" placeholder="Enter your Age">
+            <input type="text" id="email" placeholder="Enter your Email">
+            
+            <button type="button"  onclick="add()"> Add </button>
+       
+        </form> 
+
+        <table>
+        <thead >
+            <tr>
+                <th>name</th>
+                <th>age</th>
+                <th>email</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    <script>
+
+        let users = [];
+
+
+            function add() {
+                let nameInput = document.getElementById("userName");
+                let ageInput = document.getElementById("age");
+                let emailInput = document.getElementById("email");
+
+            let newUser = {
+                name: nameInput.value,
+                age: ageInput.value,
+                email: emailInput.value
+    };
+                users.push(newUser);
+
+                //ازالة محتوي العناصر بعد اضافتها في الجدول 
+                nameInput.value = "";
+                ageInput.value = "";
+                emailInput.value = "";
+
+                displayUsers();
+        }
+
+        function displayUsers() {
+         let tableBody = document.querySelector("tbody");
+         tableBody.innerHTML = ""; 
+
+            for (let i = 0; i < users.length; i++) {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${users[i].name}</td>
+                        <td>${users[i].age}</td>
+                        <td>${users[i].email}</td>
+                        <td>
+                            <button onclick="editUser(${i})">تعديل</button>
+                            <button onclick="deleteUser(${i})">حذف</button>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+            function deleteUser(index) {
+                users.splice(index, 1); 
+                displayUsers();  
+            }
+
+
+            function editUser(index) {
+                let user = users[index];
+                
+                // استرجاع البيانات للخانات لتعديلها
+                document.getElementById("userName").value = user.name;
+                document.getElementById("age").value = user.age;
+                document.getElementById("email").value = user.email;
+                users.splice(index, 1);
+            }
+
+    </script>
+    </body>
+</html>
